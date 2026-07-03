@@ -1,0 +1,100 @@
+// Modified colemak for xkb on X.Org Server 7.x
+
+// Originally by Shai Coleman           2006-01-01
+// Inspired by Jerome Leclanche (Drix)  2019-10-07
+// Made by Kristiyan Georgiev           2026-07-01
+
+partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    name[Group1]= "Colemak";
+
+    //                Unmodified     Shift           AltGr         Shift+AltGr
+
+    key <TLDE> { [        grave,        acute,          degree,            degree ] };
+    key <AE01> { [            1,   asciitilde,             yen,       onesuperior ] };
+    key <AE02> { [            2,           at,        sterling,       twosuperior ] };
+    key <AE03> { [            3,   numbersign,        EuroSign,     threesuperior ] };
+    key <AE04> { [            4,       dollar,            cent,      foursuperior ] };
+    key <AE05> { [            5,      percent,        permille,      fivesuperior ] };
+    key <AE06> { [            6,    ampersand, periodcentered,       sixsuperior ] };
+    key <AE07> { [            7,  asciicircum,        division,     sevensuperior ] };
+    key <AE08> { [            8,     asterisk,        multiply,     eightsuperior ] };
+    key <AE09> { [            9,         plus,       plusminus,      ninesuperior ] };
+    key <AE10> { [            0,        equal,        notequal,      zerosuperior ] };
+    key <AE11> { [  bracketleft,    braceleft, leftsinglequotemark, leftdoublequotemark ] };
+    key <AE12> { [ bracketright,   braceright, rightsinglequotemark, rightdoublequotemark ] };
+
+    key <AD01> { [            q,            Q,       0x1002642,       Greek_DELTA ] };
+    key <AD02> { [            w,            W,       0x1002640,       Greek_SIGMA ] };
+    key <AD03> { [            f,            F,       0x10026a5,       Greek_OMEGA ] };
+    key <AD04> { [            p,            P,               p,          Greek_pi ] };
+    key <AD05> { [            g,            G,               g,         Greek_phi ] };
+    key <AD06> { [            j,            J,               j,       Greek_theta ] };
+    key <AD07> { [            l,            L,               l,       Greek_lamda ] };
+    key <AD08> { [            u,            U,               u,          Greek_mu ] };
+    key <AD09> { [            y,            Y,               y,         Greek_rho ] };
+    key <AD10> { [    semicolon,        colon,         section,         paragraph ] };
+    key <AD11> { [    parenleft,         less,    guillemotleft,     lessthanequal ] };
+    key <AD12> { [   parenright,      greater,   guillemotright,  greaterthanequal ] };
+    key <BKSL> { [        slash,    backslash,           slash,         backslash ] };
+
+    key <AC01> { [            a,            A,               a,       Greek_alpha ] };
+    key <AC02> { [            r,            R,      registered,        Greek_beta ] };
+    key <AC03> { [            s,            S,       copyright,       Greek_gamma ] };
+    key <AC04> { [            t,            T,       trademark,       Greek_delta ] };
+    key <AC05> { [            d,            D,               d,       Greek_sigma ] };
+    key <AC06> { [            h,            H,               h,     Greek_epsilon ] };
+    key <AC07> { [            n,            N,            Left,              Left ] };
+    key <AC08> { [            e,            E,            Down,              Down ] };
+    key <AC09> { [            i,            I,              Up,                Up ] };
+    key <AC10> { [            o,            O,           Right,             Right ] };
+    key <AC11> { [   apostrophe,     quotedbl,             bar,         brokenbar ] };
+
+    key <LSGT> { [        slash,    backslash,           slash,         backslash ] };
+    key <AB01> { [            z,            Z,              ae,                AE ] };
+    key <AB02> { [            x,            X,          oslash,            Oslash ] };
+    key <AB03> { [            c,            C,           aring,             Aring ] };
+    key <AB04> { [            v,            V,               v,                 V ] };
+    key <AB05> { [            b,            B,               b,                 B ] };
+    key <AB06> { [            k,            K,               k,                 K ] };
+    key <AB07> { [            m,            M,               m,                 M ] };
+    key <AB08> { [        comma,     question,           comma,      questiondown ] };
+    key <AB09> { [       period,       exclam,       0x1002026,        exclamdown ] };
+    key <AB10> { [        minus,   underscore,          endash,            emdash ] };
+
+    key <SPCE> { [        space,        space,           space,      nobreakspace ] };
+
+    key <CAPS> { [ BackSpace ] };
+
+    include "level3(ralt_switch)"
+};
+
+partial alphanumeric_keys
+xkb_symbols "prsc-minus" {
+
+    include "colemak(basic)"
+    name[Group1]= "Colemak (Zephyrus)";
+
+    key <PRSC> { 
+        type= "FOUR_LEVEL", 
+        symbols[Group1]= [ minus, underscore, endash, emdash ] 
+    };
+};
+
+// ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
+// │ ´   │ ~ ¥ │ @ £ │ # € │ $ ¢ │ % ‰ │ & · │ ^ ÷ │ * × │ + ± │ = ≠ │ { “ │ } ” ┃  Delete ┃
+// │ ` ° │ 1 ¹ │ 2 ² │ 3 ³ │ 4 ⁴ │ 5 ⁵ │ 6 ⁶ │ 7 ⁷ │ 8 ⁸ │ 9 ⁹ │ 0 ⁰ │ [ ‘ │ ] ’ ┃         ┃
+// ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
+// ┃Tab    ┃ Q Δ │ W Σ │ F Ω │ P π │ G φ │ J θ │ L λ │ U µ │ Y ρ │ : ¶ │ < ≤ │ > ≥ ┃ ⏎     ┃
+// ┃ ↹     ┃ q ♂ │ w ♀ │ f ⚥ │ p   │ g   │ j   │ l   │ u   │ y   │ ; § │ ( « │ ) » ┃ Enter ┃
+// ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓      ┃
+// ┃Back  ⌫ ┃ A α │ R β │ S γ │ T δ │ D σ │ H ε │ N   │ E   │ I   │ O   │ " ¦ │ \   ┃      ┃
+// ┃Space   ┃ a   │ r ® │ s © │ t ™ │ d   │ h   │ n ← │ e ↓ │ i ↑ │ o → │ ' | │ /   ┃      ┃
+// ┣━━━━━━┳━┹───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┬─┴───┲━┷━━━━━┻━━━━━━┫
+// ┃Shift ┃ \   │ Z Æ │ X Ø │ C Å │ V   │ B   │ K   │ M   │ ? ¿ │ ! ¡ │ _ — ┃Shift         ┃
+// ┃ ⇧    ┃ /   │ z æ │ x ø │ c å │ v   │ b   │ k   │ m   │ ,   │ . … │ - – ┃ ⇧            ┃
+// ┣━━━━━━┻┳━━━━┷━━┳━━┷━━━━┱┴─────┴─────┴─────┴─────┴─────┴────┲┷━━━━━╈━━━━━┻┳━━━━━━┳━━━━━━┫
+// ┃Ctrl   ┃ Fn    ┃Alt    ┃ ␣             Space             ␣ ┃AltGr ┃Multi ┃ Ctxt ┃ Ctrl ┃
+// ┃       ┃       ┃       ┃                                   ┃      ┃      ┃ Menu ┃      ┃
+// ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹───────────────────────────────────┺━━━━━━┻━━━━━━┻━━━━━━┻━━━━━━┛
